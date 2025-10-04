@@ -1,450 +1,0 @@
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>قنوات الأطفال</title>
-  <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif; background:#f6f7fb; color:#222; margin:0; }
-    header { padding:24px 16px; text-align:center; background:white; box-shadow:0 1px 6px rgba(0,0,0,.06); position:sticky; top:0; z-index:5; }
-    h1 { margin:0 0 6px; font-size:24px; }
-    .sub { color:#666; font-size:14px; }
-    .wrap { max-width:1200px; margin: 18px auto; padding: 0 12px; }
-    .filters { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center; margin: 14px 0 4px; }
-    select, input[type="search"] {
-      padding:10px 12px; border:1px solid #ddd; border-radius:8px; background:#fff; font-size:14px;
-      outline:none;
-    }
-    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin:18px 0 40px; }
-    .card { background:#fff; border:1px solid #eee; border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(0,0,0,.04); display:flex; flex-direction:column; }
-    .thumb { width:80px; height:80px; margin: 6px auto 10px; object-fit:cover; border-radius:50%; background:#fafafa; border:1px solid #f0f0f0; }
-    .title { font-size:18px; margin:0 0 6px; color:#0b63c8; text-align:center; }
-    .meta { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:8px 0; }
-    .badge { background:#f0f4ff; color:#1246a0; border:1px solid #e0e7ff; padding:4px 8px; border-radius:999px; font-size:12px; }
-    .desc { color:#444; line-height:1.6; font-size:14px; margin:6px 0 10px; text-align:justify; }
-    .cta { margin-top:auto; display:flex; justify-content:center; }
-    .cta a { display:inline-block; padding:10px 14px; background:#0b63c8; color:#fff; border-radius:10px; text-decoration:none; font-size:14px; }
-    .cta a:hover { background:#084b95; }
-    footer { text-align:center; color:#888; font-size:12px; padding:18px; }
-    .hidden { display:none !important; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>📺 قائمة قنوات الأطفال</h1>
-    <div class="sub">تصفّح قنوات مناسبة بالعربية والإنجليزية — مع فلاتر حسب النوع والفئة العمرية</div>
-    <div class="wrap">
-      <div class="filters">
-        <input id="q" type="search" placeholder="ابحث باسم القناة..." oninput="applyFilters()" />
-        <select id="type" onchange="applyFilters()">
-          <option value="">كل الأنواع</option>
-          <option value="تجارب">تجارب</option><option value="ترفيهي">ترفيهي</option><option value="تعليمي">تعليمي</option><option value="ديني">ديني</option>
-        </select>
-        <select id="age" onchange="applyFilters()">
-          <option value="">كل الأعمار</option>
-          <option value="+١٠ سنوات">+١٠ سنوات</option><option value="٣-٥ سنوات">٣-٥ سنوات</option><option value="٦-٩ سنوات">٦-٩ سنوات</option>
-        </select>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <div id="grid" class="grid">
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="أهلاً سمسم">
-        <img class="thumb" src="default-avatar.PNG" alt="صورة أهلاً سمسم">
-        <h2 class="title">أهلاً سمسم</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">نسخة عربية من شارع سمسم تُعزز المهارات العاطفية والاجتماعية.</p>
-        <div class="cta"><a href="https://youtube.com/@ahlansimsim?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ترفيهي" data-age="+١٠ سنوات" data-title="حياة عايلتنا - فوق ١٣">
-        <img class="thumb" src="https://yt3.googleusercontent.com/ourfamilylifejo=s176-c-k-c0x00ffffff-no-rj" alt="صورة حياة عايلتنا - فوق ١٣">
-        <h2 class="title">حياة عايلتنا - فوق ١٣</h2>
-        <div class="meta">
-          <span class="badge">ترفيهي</span>
-          <span class="badge">+١٠ سنوات</span>
-        </div>
-        <p class="desc">قناة عائلية لمشاركة اليوميات والتجارب الحياتية.</p>
-        <div class="cta"><a href="https://youtube.com/@ourfamilylifejo?si=YqMlEzL6ytxoFnc2" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٦-٩ سنوات" data-title="سراج">
-        <img class="thumb" src="https://yt3.googleusercontent.com/sirajshowofficial=s176-c-k-c0x00ffffff-no-rj" alt="صورة سراج">
-        <h2 class="title">سراج</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">برنامج علمي ممتع يشرح المفاهيم للأطفال.</p>
-        <div class="cta"><a href="https://youtube.com/@sirajshowofficial?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="آدم ومشمش">
-        <img class="thumb" src="https://yt3.googleusercontent.com/adamwamishmish=s176-c-k-c0x00ffffff-no-rj" alt="صورة آدم ومشمش">
-        <h2 class="title">آدم ومشمش</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">أناشيد تفاعلية لتعليم الأطفال الحروف والكلمات.</p>
-        <div class="cta"><a href="https://youtube.com/@adamwamishmish?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تجارب" data-age="٦-٩ سنوات" data-title="تعلم مع نور">
-        <img class="thumb" src="https://yt3.googleusercontent.com/learnwithnoor=s176-c-k-c0x00ffffff-no-rj" alt="صورة تعلم مع نور">
-        <h2 class="title">تعلم مع نور</h2>
-        <div class="meta">
-          <span class="badge">تجارب</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">تجارب علمية مبسطة وشيقة للأطفال.</p>
-        <div class="cta"><a href="https://youtube.com/@learnwithnoor?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="قناة كرزة">
-        <img class="thumb" src="https://yt3.googleusercontent.com/karazahchannel=s176-c-k-c0x00ffffff-no-rj" alt="صورة قناة كرزة">
-        <h2 class="title">قناة كرزة</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">رسوم وأناشيد تربوية للأطفال الصغار.</p>
-        <div class="cta"><a href="https://youtube.com/@karazahchannel?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="عمر وهناء">
-        <img class="thumb" src="https://yt3.googleusercontent.com/omarandhanaarabic=s176-c-k-c0x00ffffff-no-rj" alt="صورة عمر وهناء">
-        <h2 class="title">عمر وهناء</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">تعليم السلوكيات والمهارات اليومية.</p>
-        <div class="cta"><a href="https://youtube.com/@omarandhanaarabic?si=XDutLdvMIGi6TKE8" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ترفيهي" data-age="٣-٥ سنوات" data-title="قناة ريان">
-        <img class="thumb" src="https://yt3.googleusercontent.com/rayanarabictv=s176-c-k-c0x00ffffff-no-rj" alt="صورة قناة ريان">
-        <h2 class="title">قناة ريان</h2>
-        <div class="meta">
-          <span class="badge">ترفيهي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">محتوى ترفيهي متنوع للأطفال.</p>
-        <div class="cta"><a href="https://youtube.com/@rayanarabictv?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ترفيهي" data-age="٣-٥ سنوات" data-title="الدنيا روزي">
-        <img class="thumb" src="https://yt3.googleusercontent.com/everythingsrosiearabic=s176-c-k-c0x00ffffff-no-rj" alt="صورة الدنيا روزي">
-        <h2 class="title">الدنيا روزي</h2>
-        <div class="meta">
-          <span class="badge">ترفيهي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">كرتون تعليمي ممتع.</p>
-        <div class="cta"><a href="https://youtube.com/@everythingsrosiearabic?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ترفيهي" data-age="٦-٩ سنوات" data-title="قناة ماجد">
-        <img class="thumb" src="https://yt3.googleusercontent.com/majidkids=s176-c-k-c0x00ffffff-no-rj" alt="صورة قناة ماجد">
-        <h2 class="title">قناة ماجد</h2>
-        <div class="meta">
-          <span class="badge">ترفيهي</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">برامج متنوعة وأفلام كرتونية.</p>
-        <div class="cta"><a href="https://youtube.com/@majidkids?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ترفيهي" data-age="٦-٩ سنوات" data-title="عزوز وجود">
-        <img class="thumb" src="https://yt3.googleusercontent.com/azoozjude=s176-c-k-c0x00ffffff-no-rj" alt="صورة عزوز وجود">
-        <h2 class="title">عزوز وجود</h2>
-        <div class="meta">
-          <span class="badge">ترفيهي</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">قصص ومغامرات تعليمية.</p>
-        <div class="cta"><a href="https://youtube.com/@azoozjude?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ديني" data-age="٦-٩ سنوات" data-title="قناة اقرأ وارتق - قران">
-        <img class="thumb" src="https://yt3.googleusercontent.com/iqraawartaqiacademy=s176-c-k-c0x00ffffff-no-rj" alt="صورة قناة اقرأ وارتق - قران">
-        <h2 class="title">قناة اقرأ وارتق - قران</h2>
-        <div class="meta">
-          <span class="badge">ديني</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">تعليم التلاوة والتجويد.</p>
-        <div class="cta"><a href="https://youtube.com/@iqraawartaqiacademy?si=HhJNkolv8qfzJljE" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ديني" data-age="٣-٥ سنوات" data-title="الملاك الصغير">
-        <img class="thumb" src="https://yt3.googleusercontent.com/littleangelinarabic=s176-c-k-c0x00ffffff-no-rj" alt="صورة الملاك الصغير">
-        <h2 class="title">الملاك الصغير</h2>
-        <div class="meta">
-          <span class="badge">ديني</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">أناشيد إسلامية موجهة للصغار.</p>
-        <div class="cta"><a href="https://youtube.com/@littleangelinarabic?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ديني" data-age="٣-٥ سنوات" data-title="أناشيد ورسوم دينية للأطفال">
-        <img class="thumb" src="https://yt3.googleusercontent.com/omarandhanaarabic=s176-c-k-c0x00ffffff-no-rj" alt="صورة أناشيد ورسوم دينية للأطفال">
-        <h2 class="title">أناشيد ورسوم دينية للأطفال</h2>
-        <div class="meta">
-          <span class="badge">ديني</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">محتوى ديني وأناشيد أطفال.</p>
-        <div class="cta"><a href="https://youtube.com/@omarandhanaarabic?si=ya12l7qmE7pSRAv8" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٦-٩ سنوات" data-title="بابل">
-        <img class="thumb" src="https://yt3.googleusercontent.com/bubblebeeedutainment=s176-c-k-c0x00ffffff-no-rj" alt="صورة بابل">
-        <h2 class="title">بابل</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">محتوى تعليمي تفاعلي باللغة الإنجليزية.</p>
-        <div class="cta"><a href="https://youtube.com/@bubblebeeedutainment?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ديني" data-age="٦-٩ سنوات" data-title="كلام - إسلامية">
-        <img class="thumb" src="https://yt3.googleusercontent.com/kalamkids=s176-c-k-c0x00ffffff-no-rj" alt="صورة كلام - إسلامية">
-        <h2 class="title">كلام - إسلامية</h2>
-        <div class="meta">
-          <span class="badge">ديني</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">قصص دينية للأطفال.</p>
-        <div class="cta"><a href="https://youtube.com/@kalamkids?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ديني" data-age="٦-٩ سنوات" data-title="داود - قران">
-        <img class="thumb" src="https://yt3.googleusercontent.com/dawoodkidstv=s176-c-k-c0x00ffffff-no-rj" alt="صورة داود - قران">
-        <h2 class="title">داود - قران</h2>
-        <div class="meta">
-          <span class="badge">ديني</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">تلاوات قرآنية بصوت طفل.</p>
-        <div class="cta"><a href="https://youtube.com/@dawoodkidstv?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ديني" data-age="٣-٥ سنوات" data-title="ميمي لتعليم القران الكريم">
-        <img class="thumb" src="https://yt3.googleusercontent.com/mimitvkids=s176-c-k-c0x00ffffff-no-rj" alt="صورة ميمي لتعليم القران الكريم">
-        <h2 class="title">ميمي لتعليم القران الكريم</h2>
-        <div class="meta">
-          <span class="badge">ديني</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">تعليم قصار السور بطريقة محببة.</p>
-        <div class="cta"><a href="https://youtube.com/@mimitvkids?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٦-٩ سنوات" data-title="Crash course kids">
-        <img class="thumb" src="https://yt3.googleusercontent.com/crashcoursekids=s176-c-k-c0x00ffffff-no-rj" alt="صورة Crash course kids">
-        <h2 class="title">Crash course kids</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">مفاهيم علمية مبسطة.</p>
-        <div class="cta"><a href="https://youtube.com/@crashcoursekids?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تجارب" data-age="+١٠ سنوات" data-title="Scishow">
-        <img class="thumb" src="https://yt3.googleusercontent.com/scishowkids=s176-c-k-c0x00ffffff-no-rj" alt="صورة Scishow">
-        <h2 class="title">Scishow</h2>
-        <div class="meta">
-          <span class="badge">تجارب</span>
-          <span class="badge">+١٠ سنوات</span>
-        </div>
-        <p class="desc">تجارب علمية للأطفال الكبار.</p>
-        <div class="cta"><a href="https://youtube.com/@scishowkids?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٦-٩ سنوات" data-title="Nat Geo Kids">
-        <img class="thumb" src="https://yt3.googleusercontent.com/natgeokids=s176-c-k-c0x00ffffff-no-rj" alt="صورة Nat Geo Kids">
-        <h2 class="title">Nat Geo Kids</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">اكتشاف الطبيعة والحيوانات.</p>
-        <div class="cta"><a href="https://youtube.com/@natgeokids?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="Numberblocks">
-        <img class="thumb" src="https://yt3.googleusercontent.com/numberblocks=s176-c-k-c0x00ffffff-no-rj" alt="صورة Numberblocks">
-        <h2 class="title">Numberblocks</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">تعليم الأرقام والعد.</p>
-        <div class="cta"><a href="https://youtube.com/@numberblocks?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="Bumblenums">
-        <img class="thumb" src="https://yt3.googleusercontent.com/bumblenums=s176-c-k-c0x00ffffff-no-rj" alt="صورة Bumblenums">
-        <h2 class="title">Bumblenums</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">أناشيد طبخ مرحة وتعليمية.</p>
-        <div class="cta"><a href="https://youtube.com/@bumblenums?si=r3bsv2jXsAuwvFzi" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تجارب" data-age="٦-٩ سنوات" data-title="Wizz explore">
-        <img class="thumb" src="https://yt3.googleusercontent.com/wizzexplore=s176-c-k-c0x00ffffff-no-rj" alt="صورة Wizz explore">
-        <h2 class="title">Wizz explore</h2>
-        <div class="meta">
-          <span class="badge">تجارب</span>
-          <span class="badge">٦-٩ سنوات</span>
-        </div>
-        <p class="desc">محتوى استكشافي للأطفال.</p>
-        <div class="cta"><a href="https://youtube.com/@wizzexplore?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="Little learners">
-        <img class="thumb" src="https://yt3.googleusercontent.com/littlelearnersvideos=s176-c-k-c0x00ffffff-no-rj" alt="صورة Little learners">
-        <h2 class="title">Little learners</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">تعليم الحروف والكلمات.</p>
-        <div class="cta"><a href="https://youtube.com/@littlelearnersvideos?si=Lj4ggvQRvkMvXEw1" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="Bounce patrol">
-        <img class="thumb" src="https://yt3.googleusercontent.com/ytc/UCeLexKoQ_8pMKfaA1bM49bg=s176-c-k-c0x00ffffff-no-rj" alt="صورة Bounce patrol">
-        <h2 class="title">Bounce patrol</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">أناشيد تعليمية وحركية.</p>
-        <div class="cta"><a href="https://youtube.com/channel/UCeLexKoQ_8pMKfaA1bM49bg?si=q2zZG3ecimDvCydP" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="Starfall">
-        <img class="thumb" src="https://yt3.googleusercontent.com/starfall=s176-c-k-c0x00ffffff-no-rj" alt="صورة Starfall">
-        <h2 class="title">Starfall</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">تعليم الإنجليزية للأطفال.</p>
-        <div class="cta"><a href="https://youtube.com/@starfall?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="Lucymax English">
-        <img class="thumb" src="https://yt3.googleusercontent.com/lucymaxenglish=s176-c-k-c0x00ffffff-no-rj" alt="صورة Lucymax English">
-        <h2 class="title">Lucymax English</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">تعليم الإنجليزية والمفردات.</p>
-        <div class="cta"><a href="https://youtube.com/@lucymaxenglish?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="+١٠ سنوات" data-title="Bing bag academy">
-        <img class="thumb" src="https://yt3.googleusercontent.com/bigbangacademykids=s176-c-k-c0x00ffffff-no-rj" alt="صورة Bing bag academy">
-        <h2 class="title">Bing bag academy</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">+١٠ سنوات</span>
-        </div>
-        <p class="desc">علوم وتجارب للأطفال الأكبر.</p>
-        <div class="cta"><a href="https://youtube.com/@bigbangacademykids?si=7xTcsk9mzzGk7YKh" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ترفيهي" data-age="٣-٥ سنوات" data-title="Cbeebies">
-        <img class="thumb" src="https://yt3.googleusercontent.com/cbeebies=s176-c-k-c0x00ffffff-no-rj" alt="صورة Cbeebies">
-        <h2 class="title">Cbeebies</h2>
-        <div class="meta">
-          <span class="badge">ترفيهي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">قناة BBC الموجهة للأطفال.</p>
-        <div class="cta"><a href="https://youtube.com/@cbeebies?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="Kids 123">
-        <img class="thumb" src="https://www.youtube.com/img/default_channel.png" alt="صورة Kids 123">
-        <h2 class="title">Kids 123</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">محتوى أرقام وتعليم بسيط.</p>
-        <div class="cta"><a href="" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ترفيهي" data-age="٣-٥ سنوات" data-title="Guess Who much I love you">
-        <img class="thumb" src="https://yt3.googleusercontent.com/guesshowmuchiloveyou=s176-c-k-c0x00ffffff-no-rj" alt="صورة Guess Who much I love you">
-        <h2 class="title">Guess Who much I love you</h2>
-        <div class="meta">
-          <span class="badge">ترفيهي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">قصص كرتونية رقيقة.</p>
-        <div class="cta"><a href="https://youtube.com/@guesshowmuchiloveyou?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="ترفيهي" data-age="٣-٥ سنوات" data-title="Danny go">
-        <img class="thumb" src="https://yt3.googleusercontent.com/dannygo=s176-c-k-c0x00ffffff-no-rj" alt="صورة Danny go">
-        <h2 class="title">Danny go</h2>
-        <div class="meta">
-          <span class="badge">ترفيهي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">أناشيد وحركة للأطفال.</p>
-        <div class="cta"><a href="https://youtube.com/@dannygo?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-      <article class="card" data-type="تعليمي" data-age="٣-٥ سنوات" data-title="Lucas &amp; Friends">
-        <img class="thumb" src="https://yt3.googleusercontent.com/rvappstudios=s176-c-k-c0x00ffffff-no-rj" alt="صورة Lucas &amp; Friends">
-        <h2 class="title">Lucas & Friends</h2>
-        <div class="meta">
-          <span class="badge">تعليمي</span>
-          <span class="badge">٣-٥ سنوات</span>
-        </div>
-        <p class="desc">أناشيد وتعليم مبسط للصغار.</p>
-        <div class="cta"><a href="https://youtube.com/@rvappstudios?feature=shared" target="_blank" rel="noopener">زيارة القناة</a></div>
-      </article>
-      
-    </div>
-  </main>
-
-  <footer>© قنوات الأطفال — صفحة تجريبية</footer>
-
-  <script>
-    function applyFilters() {
-      const q = document.getElementById('q').value.trim().toLowerCase();
-      const typeVal = document.getElementById('type').value;
-      const ageVal  = document.getElementById('age').value;
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        const title = card.dataset.title.toLowerCase();
-        const matchQ = !q || title.includes(q);
-        const matchT = !typeVal || card.dataset.type === typeVal;
-        const matchA = !ageVal  || card.dataset.age  === ageVal;
-        card.classList.toggle('hidden', !(matchQ && matchT && matchA));
-      });
-    }
-  </script>
-</body>
-</html>
