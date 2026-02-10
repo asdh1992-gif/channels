@@ -85,6 +85,23 @@
       transition:.2s transform ease, .2s opacity ease;
       user-select:none;
     }
+    
+    /* توحيد خط زر زيارة القناة مع زر النسخ */
+a.btn,
+button.btn{
+  font-family: "Cairo", Tahoma, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  height: 42px;
+  min-width: 130px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
     .btn:hover{transform:scale(1.03)}
     .btn:active{transform:scale(.98)}
     .btn.visit{background:linear-gradient(to right,var(--navy-1),var(--navy-2))}
