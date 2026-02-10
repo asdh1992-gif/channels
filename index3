@@ -561,8 +561,8 @@ button.btn{
         <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
       </div>
       <div class="cta-row">
-        <a class="btn visit" href="#" target="_blank" onclick="return false;">زيارة القناة</a>
-        <button class="btn copy" data-url="nan">📋 نسخ الرابط</button>
+        <a class="btn visit" href="https://youtube.com/@kidstv123?si=GBtJiLR3bwNwW3Rl" target="_blank" onclick="return false;">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@kidstv123?si=GBtJiLR3bwNwW3Rl">📋 نسخ الرابط</button>
       </div>
     </div>
 
