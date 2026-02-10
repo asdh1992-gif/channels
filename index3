@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>قنوات الأطفال</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph / Twitter -->
+  <meta content="دليل قنوات YouTube للأطفال" property="og:title" />
+  <meta content="استعرض أفضل القنوات التعليمية والترفيهية والدينية المصنفة حسب العمر، اللغة، والنوع." property="og:description" />
+  <meta content="https://asdh1992-gif.github.io/channels/default-avatar.png" property="og:image" />
+  <meta content="https://asdh1992-gif.github.io/channels/" property="og:url" />
+  <meta content="summary_large_image" name="twitter:card" />
+
+  <style>
+    :root{
+      --navy-1:#162447;
+      --navy-2:#1f4068;
+      --green-1:#31B28B;
+      --green-2:#2DBF95;
+      --badge-bg:#e1ecf4;
+      --badge-tx:#0366d6;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:"Cairo", Tahoma, sans-serif;
+      background:linear-gradient(145deg,#fdfdfd,#f3f7fa);
+      margin:0; color:#222;
+    }
+    header{
+      background:linear-gradient(135deg,#f8fafc,#e6ecf2);
+      padding:40px 20px; border-bottom:2px solid #dde3ea;
+      text-align:center;
+    }
+    header h1{font-size:32px;color:#1a237e;margin:0 0 8px}
+    header p{color:#4a4a4a;font-size:16px;margin:0 0 20px}
+
+    .suggest-button{
+      display:inline-block; margin:10px 0 18px;
+      background:linear-gradient(to right,var(--green-1),var(--green-1));
+      color:#fff; padding:10px 20px; border-radius:25px;
+      text-decoration:none; font-weight:700;
+      box-shadow:0 4px 10px rgba(0,0,0,.1);
+      transition:.2s transform ease, .2s opacity ease;
+    }
+    .suggest-button:hover{transform:scale(1.03)}
+    .suggest-button:active{transform:scale(.98)}
+
+    .search-container{margin:10px 0 12px}
+    .search-input{
+      width:min(400px,90vw); padding:10px;border-radius:8px;border:1px solid #ccc
+    }
+
+    .filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    select{padding:10px 14px;border:1px solid #ccc;border-radius:10px;font-size:15px}
+
+    .grid{
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:20px; padding:20px; max-width:1200px; margin:0 auto;
+    }
+    .card{
+      background:#fff; border-radius:16px; padding:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,.07);
+      display:flex; flex-direction:column; align-items:center;
+      transition:.25s ease
+    }
+    .card:hover{transform:translateY(-6px); box-shadow:0 12px 30px rgba(0,0,0,.12)}
+    .thumb{
+      width:90px;height:90px;border-radius:50%;object-fit:cover;margin-bottom:10px;
+      border:3px solid #e0e0e0
+    }
+    .title{font-size:18px;margin:8px 0 4px;color:#007acc;font-weight:700;text-align:center}
+    .desc{font-size:14px;color:#444;text-align:center;min-height:48px}
+    .badges{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+    .badge{background:var(--badge-bg);color:var(--badge-tx);border-radius:20px;padding:4px 10px;font-size:12px}
+
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+    .btn{
+      border:none; cursor:pointer; border-radius:25px; padding:10px 16px;
+      color:#fff; font-weight:700; text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      box-shadow:0 4px 10px rgba(0,0,0,.1);
+      transition:.2s transform ease, .2s opacity ease;
+      user-select:none;
+    }
+    .btn:hover{transform:scale(1.03)}
+    .btn:active{transform:scale(.98)}
+    .btn.visit{background:linear-gradient(to right,var(--navy-1),var(--navy-2))}
+    .btn.copy {background:linear-gradient(to right,var(--green-1),var(--green-2))}
+
+    .toast{
+      position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
+      background:#222;color:#fff;padding:10px 14px;border-radius:10px;
+      font-size:14px;opacity:0;pointer-events:none;
+      transition:.25s ease
+    }
+    .toast.show{opacity:1}
+
+    footer{
+      text-align:center;padding:20px;background:#f0f0f0;color:#777;font-size:14px
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div style="max-width:880px;margin:auto">
+      <h1>📚 قنوات الأطفال التعليمية</h1>
+      <p>دليل مختار بعناية لقنوات YouTube المناسبة للأطفال في مجالات التعليم، الترفيه، والدين</p>
+
+      <a class="suggest-button" href="https://docs.google.com/forms/d/e/1FAIpQLSfHz-nJ0r46ASqELWvPPW63xcBszGJa_T9ndu_azY82iueqww/viewform?usp=send_form" target="_blank">
+        ✨ اقترح قناة جديدة
+      </a>
+
+      <div class="search-container">
+        <input id="searchInput" class="search-input" placeholder="ابحث باسم القناة..." type="text" />
+      </div>
+
+      <div class="filters">
+        <select id="typeFilter">
+          <option value="">كل الأنواع</option>
+          <option value="تعليمي">🎓 تعليمي</option>
+          <option value="ترفيهي">🎉 ترفيهي</option>
+          <option value="ديني">🕌 ديني</option>
+          <option value="تجارب">🧪 تجارب</option>
+        </select>
+
+        <select id="ageFilter">
+          <option value="">كل الأعمار</option>
+          <option value="٣-٥ سنوات">٣-٥ سنوات</option>
+          <option value="٦-٩ سنوات">٦-٩ سنوات</option>
+          <option value="+١٠ سنوات">+١٠ سنوات</option>
+        </select>
+
+        <select id="langFilter">
+          <option value="">كل اللغات</option>
+          <option value="عربي">🇸🇦 عربي</option>
+          <option value="إنجليزي">🇬🇧 إنجليزي</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- القنوات -->
+  <div class="grid" id="channelList">
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="عربي" data-type="ديني">
+      <img alt="داوود - قرآن" class="thumb" src="default-avatar.PNG" />
+      <div class="title">داوود - قرآن</div>
+      <div class="desc">تلاوات قرآنية بصوت طفل.</div>
+      <div class="badges">
+        <span class="badge">ديني</span><span class="badge">٦-٩ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@dawoodkidstv?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@dawoodkidstv?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="عربي" data-type="ديني">
+      <img alt="الملاك الصغير" class="thumb" src="default-avatar.PNG" />
+      <div class="title">الملاك الصغير</div>
+      <div class="desc">أناشيد إسلامية موجهة للصغار.</div>
+      <div class="badges">
+        <span class="badge">ديني</span><span class="badge">٣-٥ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@littleangelinarabic?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@littleangelinarabic?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="عربي" data-type="ديني">
+      <img alt="قناة اقرأ وارتق - قران" class="thumb" src="default-avatar.PNG" />
+      <div class="title">قناة اقرأ وارتق - قران</div>
+      <div class="desc">تعليم التلاوة والتجويد.</div>
+      <div class="badges">
+        <span class="badge">ديني</span><span class="badge">٦-٩ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@iqraawartaqiacademy?si=HhJNkolv8qfzJljE" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@iqraawartaqiacademy?si=HhJNkolv8qfzJljE">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="عربي" data-type="ديني">
+      <img alt="أناشيد ورسوم دينية للأطفال" class="thumb" src="default-avatar.PNG" />
+      <div class="title">أناشيد ورسوم دينية للأطفال</div>
+      <div class="desc">محتوى ديني وأناشيد أطفال.</div>
+      <div class="badges">
+        <span class="badge">ديني</span><span class="badge">٣-٥ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@omarandhanaarabic?si=ya12l7qmE7pSRAv8" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@omarandhanaarabic?si=ya12l7qmE7pSRAv8">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="عربي" data-type="ديني">
+      <img alt="كلام - إسلامية" class="thumb" src="default-avatar.PNG" />
+      <div class="title">كلام - إسلامية</div>
+      <div class="desc">قصص دينية للأطفال.</div>
+      <div class="badges">
+        <span class="badge">ديني</span><span class="badge">٦-٩ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@kalamkids?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@kalamkids?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="عربي" data-type="ديني">
+      <img alt="ميمي لتعليم القران الكريم" class="thumb" src="default-avatar.PNG" />
+      <div class="title">ميمي لتعليم القران الكريم</div>
+      <div class="desc">تعليم قصار السور بطريقة محببة.</div>
+      <div class="badges">
+        <span class="badge">ديني</span><span class="badge">٣-٥ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@mimitvkids?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@mimitvkids?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="عربي" data-type="تعليمي">
+      <img alt="أهلاً سمسم" class="thumb" src="default-avatar.PNG" />
+      <div class="title">أهلاً سمسم</div>
+      <div class="desc">نسخة عربية من شارع سمسم تُعزز المهارات العاطفية والاجتماعية.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@ahlansimsim?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@ahlansimsim?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="+١٠ سنوات" data-lang="عربي" data-type="ترفيهي">
+      <img alt="حياة عايلتنا" class="thumb" src="default-avatar.PNG" />
+      <div class="title">حياة عايلتنا</div>
+      <div class="desc">قناة عائلية لمشاركة اليوميات والتجارب الحياتية.</div>
+      <div class="badges">
+        <span class="badge">ترفيهي</span><span class="badge">+١٠ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@ourfamilylifejo?si=YqMlEzL6ytxoFnc2" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@ourfamilylifejo?si=YqMlEzL6ytxoFnc2">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="عربي" data-type="تعليمي">
+      <img alt="سراج" class="thumb" src="default-avatar.PNG" />
+      <div class="title">سراج</div>
+      <div class="desc">برنامج علمي ممتع يشرح المفاهيم للأطفال.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٦-٩ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@sirajshowofficial?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@sirajshowofficial?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="عربي" data-type="تعليمي">
+      <img alt="آدم ومشمش" class="thumb" src="default-avatar.PNG" />
+      <div class="title">آدم ومشمش</div>
+      <div class="desc">أناشيد تفاعلية لتعليم الأطفال الحروف والكلمات.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@adamwamishmish?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@adamwamishmish?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="عربي" data-type="تجارب">
+      <img alt="تعلم مع نور" class="thumb" src="default-avatar.PNG" />
+      <div class="title">تعلم مع نور</div>
+      <div class="desc">تجارب علمية مبسطة وشيقة للأطفال.</div>
+      <div class="badges">
+        <span class="badge">تجارب</span><span class="badge">٦-٩ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@learnwithnoor?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@learnwithnoor?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="عربي" data-type="تعليمي">
+      <img alt="قناة كرزة" class="thumb" src="default-avatar.PNG" />
+      <div class="title">قناة كرزة</div>
+      <div class="desc">رسوم وأناشيد تربوية للأطفال الصغار.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@karazahchannel?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@karazahchannel?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="عربي" data-type="تعليمي">
+      <img alt="عمر وهناء" class="thumb" src="default-avatar.PNG" />
+      <div class="title">عمر وهناء</div>
+      <div class="desc">تعليم السلوكيات والمهارات اليومية.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@omarandhanaarabic?si=XDutLdvMIGi6TKE8" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@omarandhanaarabic?si=XDutLdvMIGi6TKE8">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="عربي" data-type="ترفيهي">
+      <img alt="قناة ريان" class="thumb" src="default-avatar.PNG" />
+      <div class="title">قناة ريان</div>
+      <div class="desc">محتوى ترفيهي متنوع للأطفال.</div>
+      <div class="badges">
+        <span class="badge">ترفيهي</span><span class="badge">٣-٥ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@rayanarabictv?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@rayanarabictv?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="عربي" data-type="ترفيهي">
+      <img alt="الدنيا روزي" class="thumb" src="default-avatar.PNG" />
+      <div class="title">الدنيا روزي</div>
+      <div class="desc">كرتون تعليمي ممتع.</div>
+      <div class="badges">
+        <span class="badge">ترفيهي</span><span class="badge">٣-٥ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@everythingsrosiearabic?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@everythingsrosiearabic?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="عربي" data-type="ترفيهي">
+      <img alt="قناة ماجد" class="thumb" src="default-avatar.PNG" />
+      <div class="title">قناة ماجد</div>
+      <div class="desc">برامج متنوعة وأفلام كرتونية.</div>
+      <div class="badges">
+        <span class="badge">ترفيهي</span><span class="badge">٦-٩ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@majidkids?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@majidkids?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="عربي" data-type="ترفيهي">
+      <img alt="عزوز وجود" class="thumb" src="default-avatar.PNG" />
+      <div class="title">عزوز وجود</div>
+      <div class="desc">قصص ومغامرات تعليمية.</div>
+      <div class="badges">
+        <span class="badge">ترفيهي</span><span class="badge">٦-٩ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@azoozjude?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@azoozjude?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="عربي" data-type="تعليمي">
+      <img alt="بابل" class="thumb" src="default-avatar.PNG" />
+      <div class="title">بابل</div>
+      <div class="desc">محتوى تعليمي تفاعلي باللغة الإنجليزية.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٦-٩ سنوات</span><span class="badge">عربي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@bubblebeeedutainment?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@bubblebeeedutainment?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Crash course kids" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Crash course kids</div>
+      <div class="desc">مفاهيم علمية مبسطة.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٦-٩ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@crashcoursekids?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@crashcoursekids?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="+١٠ سنوات" data-lang="إنجليزي" data-type="تجارب">
+      <img alt="Scishow" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Scishow</div>
+      <div class="desc">تجارب علمية للأطفال الكبار.</div>
+      <div class="badges">
+        <span class="badge">تجارب</span><span class="badge">+١٠ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@scishowkids?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@scishowkids?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Nat Geo Kids" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Nat Geo Kids</div>
+      <div class="desc">اكتشاف الطبيعة والحيوانات.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٦-٩ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@natgeokids?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@natgeokids?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Numberblocks" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Numberblocks</div>
+      <div class="desc">تعليم الأرقام والعد.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@numberblocks?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@numberblocks?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Bumblenums" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Bumblenums</div>
+      <div class="desc">أناشيد طبخ مرحة وتعليمية.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@bumblenums?si=r3bsv2jXsAuwvFzi" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@bumblenums?si=r3bsv2jXsAuwvFzi">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٦-٩ سنوات" data-lang="إنجليزي" data-type="تجارب">
+      <img alt="Wizz explore" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Wizz explore</div>
+      <div class="desc">محتوى استكشافي للأطفال.</div>
+      <div class="badges">
+        <span class="badge">تجارب</span><span class="badge">٦-٩ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@wizzexplore?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@wizzexplore?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Little learners" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Little learners</div>
+      <div class="desc">تعليم الحروف والكلمات.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@littlelearnersvideos?si=Lj4ggvQRvkMvXEw1" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@littlelearnersvideos?si=Lj4ggvQRvkMvXEw1">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Bounce patrol" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Bounce patrol</div>
+      <div class="desc">أناشيد تعليمية وحركية.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/channel/UCeLexKoQ_8pMKfaA1bM49bg?si=q2zZG3ecimDvCydP" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/channel/UCeLexKoQ_8pMKfaA1bM49bg?si=q2zZG3ecimDvCydP">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Starfall" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Starfall</div>
+      <div class="desc">تعليم الإنجليزية للأطفال.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@starfall?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@starfall?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Lucymax English" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Lucymax English</div>
+      <div class="desc">تعليم الإنجليزية والمفردات.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@lucymaxenglish?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@lucymaxenglish?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="+١٠ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Bing bag academy" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Bing bag academy</div>
+      <div class="desc">علوم وتجارب للأطفال الأكبر.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">+١٠ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@bigbangacademykids?si=7xTcsk9mzzGk7YKh" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@bigbangacademykids?si=7xTcsk9mzzGk7YKh">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="ترفيهي">
+      <img alt="Cbeebies" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Cbeebies</div>
+      <div class="desc">قناة BBC الموجهة للأطفال.</div>
+      <div class="badges">
+        <span class="badge">ترفيهي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@cbeebies?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@cbeebies?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Kids 123" class="thumb" src="https://www.youtube.com/img/default_channel.png" />
+      <div class="title">Kids 123</div>
+      <div class="desc">محتوى أرقام وتعليم بسيط.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="#" target="_blank" onclick="return false;">زيارة القناة</a>
+        <button class="btn copy" data-url="nan">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="ترفيهي">
+      <img alt="Guess How Much I Love You" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Guess How Much I Love You</div>
+      <div class="desc">قصص كرتونية رقيقة.</div>
+      <div class="badges">
+        <span class="badge">ترفيهي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@guesshowmuchiloveyou?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@guesshowmuchiloveyou?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="ترفيهي">
+      <img alt="Danny Go" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Danny go</div>
+      <div class="desc">أناشيد وحركة للأطفال.</div>
+      <div class="badges">
+        <span class="badge">ترفيهي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@dannygo?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@dannygo?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div class="card" data-age="٣-٥ سنوات" data-lang="إنجليزي" data-type="تعليمي">
+      <img alt="Lucas & Friends" class="thumb" src="default-avatar.PNG" />
+      <div class="title">Lucas &amp; Friends</div>
+      <div class="desc">أناشيد وتعليم مبسط للصغار.</div>
+      <div class="badges">
+        <span class="badge">تعليمي</span><span class="badge">٣-٥ سنوات</span><span class="badge">إنجليزي</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn visit" href="https://youtube.com/@rvappstudios?feature=shared" target="_blank">زيارة القناة</a>
+        <button class="btn copy" data-url="https://youtube.com/@rvappstudios?feature=shared">📋 نسخ الرابط</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin:30px 0 16px">
+    <a class="suggest-button" href="https://docs.google.com/forms/d/e/1FAIpQLSfHz-nJ0r46ASqELWvPPW63xcBszGJa_T9ndu_azY82iueqww/viewform?usp=send_form" target="_blank">
+      ✨ اقترح قناة جديدة
+    </a>
+  </div>
+
+  <footer>
+    🚀 تم الإنشاء بواسطة دليل القنوات التعليمية للأطفال | جميع الحقوق محفوظة © 2025
+  </footer>
+
+  <div class="toast" id="toast">تم النسخ ✓</div>
+
+  <script>
+    // ===== Toast + Copy =====
+    const toast = document.getElementById('toast');
+
+    function showToast(message){
+      toast.textContent = message || 'تم النسخ ✓';
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 1800);
+    }
+
+    function copyText(txt){
+      if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(txt).then(()=>showToast('تم النسخ ✓'));
+      }else{
+        const ta=document.createElement('textarea');
+        ta.value=txt; document.body.appendChild(ta);
+        ta.select(); ta.setSelectionRange(0,99999);
+        try{ document.execCommand('copy'); }catch(e){}
+        ta.remove(); showToast('تم النسخ ✓');
+      }
+    }
+
+    document.querySelectorAll('.btn.copy').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const url = (btn.dataset.url || '').trim();
+        if(!url || url.toLowerCase() === 'nan'){
+          showToast('لا يوجد رابط لهذه القناة');
+          return;
+        }
+        copyText(url);
+      });
+    });
+
+    // ===== Filters + Search =====
+    function normalizeAge(s){
+      return (s || '').replace(/\s*سنوات?\s*/g,'').trim();
+    }
+
+    const typeFilter  = document.getElementById("typeFilter");
+    const ageFilter   = document.getElementById("ageFilter");
+    const langFilter  = document.getElementById("langFilter");
+    const searchInput = document.getElementById("searchInput");
+
+    function filterCards(){
+      const selectedType = typeFilter.value;
+      const selectedAge  = ageFilter.value;
+      const selectedLang = langFilter.value;
+      const q = (searchInput.value || "").trim().toLowerCase();
+
+      document.querySelectorAll(".card").forEach(card=>{
+        const type  = card.dataset.type || "";
+        const age   = card.dataset.age  || "";
+        const lang  = card.dataset.lang || "";
+        const title = (card.querySelector(".title")?.textContent || "").toLowerCase();
+
+        const matchFilters =
+          (selectedType === "" || type === selectedType) &&
+          (selectedLang === "" || lang === selectedLang) &&
+          (selectedAge === ""  || normalizeAge(age) === normalizeAge(selectedAge));
+
+        const matchSearch = (q === "" || title.includes(q));
+
+        card.style.display = (matchFilters && matchSearch) ? "flex" : "none";
+      });
+    }
+
+    typeFilter.addEventListener("change", filterCards);
+    ageFilter.addEventListener("change", filterCards);
+    langFilter.addEventListener("change", filterCards);
+    searchInput.addEventListener("input", filterCards);
+
+    // تشغيل أولي
+    filterCards();
+  </script>
+</body>
+</html>
